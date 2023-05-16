@@ -25,11 +25,16 @@ def process_message(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text=signal)
 
 def main():
-    updater = Updater(TELEGRAM_API_TOKEN, True)
-    dispatcher = updater.dispatcher
+
+
+    # get the dispatcher to register handlers
+    updater = Updater(TELEGRAM_API_TOKEN, use_context=True)
+
+    dp = updater.dispatcher
+
 
     # Register the message handler
-    dispatcher.add_handler(MessageHandler(filters.text, process_message))
+    dp.add_handler(MessageHandler(filters.text, process_message))
 
     # Start the bot
     updater.start_polling()
