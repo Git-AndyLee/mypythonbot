@@ -3,8 +3,10 @@ import telegram
 from telegram.ext import CommandHandler, filters, MessageHandler, Updater, ConversationHandler, CallbackContext
 
 
-
 TELEGRAM_API_TOKEN = os.getenv('TELEGRAM_API_TOKEN')
+PORT = int(os.environ.get('PORT', '8443'))
+APP_URL = os.environ.get("APP_URL")
+
 
 def process_message(update, context):
     message_text = update.message.text
@@ -37,7 +39,8 @@ def main():
     dp.add_handler(MessageHandler(filters.text, process_message))
 
     # Start the bot
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TELEGRAM_API_TOKEN, webhook_url=APP_URL + TELEGRAM_API_TOKEN)
+
     updater.idle()
 
 if __name__ == '__main__':
