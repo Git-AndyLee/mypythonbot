@@ -1,6 +1,6 @@
 import os
 import telegram
-from telegram.ext import CommandHandler, filters, MessageHandler, Updater, ConversationHandler, CallbackContext
+from telegram.ext import CommandHandler, Filters, MessageHandler, Updater, ConversationHandler, CallbackContext
 
 
 TELEGRAM_API_TOKEN = os.getenv('TELEGRAM_API_TOKEN')
@@ -35,7 +35,7 @@ def main():
 
 
     # Register the message handler
-    dp.add_handler(MessageHandler(filters.text, process_message))
+    dp.add_handler(MessageHandler(Filters.text, process_message))
 
     # Start the bot
     updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TELEGRAM_API_TOKEN, webhook_url=APP_URL + TELEGRAM_API_TOKEN)
