@@ -29,7 +29,7 @@ def process_message(update, context):
 def main():
 
     # get the dispatcher to register handlers
-    updater = Updater(TELEGRAM_API_TOKEN, True)
+    updater = Updater(TELEGRAM_API_TOKEN, use_context=True)
 
     dp = updater.dispatcher
 
