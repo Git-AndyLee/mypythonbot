@@ -25,7 +25,7 @@ def process_message(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text=signal)
 
 def main():
-    updater = Updater(TELEGRAM_API_TOKEN, use_context=True)
+    updater = Updater(TELEGRAM_API_TOKEN, True)
     dispatcher = updater.dispatcher
 
     # Register the message handler
