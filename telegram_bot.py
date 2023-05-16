@@ -1,6 +1,6 @@
 import os
 import telegram
-from telegram.ext import CommandHandler, Filters, MessageHandler, Updater, ConversationHandler, CallbackContext
+from telegram.ext import CommandHandler, filters, MessageHandler, Updater, ConversationHandler, CallbackContext
 
 
 
@@ -29,7 +29,7 @@ def main():
     dispatcher = updater.dispatcher
 
     # Register the message handler
-    dispatcher.add_handler(MessageHandler(Filters.text, process_message))
+    dispatcher.add_handler(MessageHandler(filters.text, process_message))
 
     # Start the bot
     updater.start_polling()
